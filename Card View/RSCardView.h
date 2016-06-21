@@ -23,6 +23,8 @@ typedef NS_ENUM (NSUInteger, RSCardViewSwipeDirection) {
 
 - (BOOL)canToggleSettings:(RSCardView *)cardView;
 
+- (void)didPressSetting:(RSCardView*)cardView;
+
 - (void)didRemoveFromSuperview:(RSCardView *)cardView;
 
 - (void)didTapOnCard:(RSCardView *)cardView;
@@ -38,11 +40,13 @@ typedef NS_ENUM (NSUInteger, RSCardViewSwipeDirection) {
 @end
 
 @interface RSCardView : UIView {
-    UIView *_contentView;
-    UIButton *_settingsButton;
-    UIView *_settingsView;
+    
+    
 }
 
+@property (nonatomic, strong) UIView *contentView;
+@property (nonatomic, strong) UIView *settingsView;
+@property (nonatomic, strong) UIButton *settingsButton;
 @property (assign, nonatomic) id <RSCardViewDelegate> delegate;
 
 @property (assign, nonatomic) BOOL shouldOpenSettingsLater;

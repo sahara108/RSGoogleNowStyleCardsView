@@ -57,9 +57,9 @@ typedef NS_ENUM (NSUInteger, RSCardsViewAnimationStyle) {
 
 @interface RSCardsView : UIScrollView <RSCardViewDelegate>
 
-@property (nonatomic, assign) id <RSCardsViewDataSource> dataSource;
+@property (nonatomic, assign) IBOutlet id <RSCardsViewDataSource> dataSource;
 
-@property (nonatomic, assign) id <RSCardsViewDelegate> delegate;
+@property (nonatomic, assign) IBOutlet id <RSCardsViewDelegate> delegate;
 
 @property (nonatomic, assign) RSCardsViewAnimationStyle animationStyle;
 

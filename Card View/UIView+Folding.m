@@ -87,7 +87,7 @@ KeyframeParametrizedBlock kbCloseFunction = ^double (NSTimeInterval time) {
         [jointLayer addSublayer:imageLayer];
         
         CGImageRef imageCrop = CGImageCreateWithImageInRect(image.CGImage, frame);
-        imageLayer.contents = (id)imageCrop;
+        imageLayer.contents = (__bridge id)imageCrop;
         CFRelease(imageCrop);
         imageLayer.backgroundColor = [UIColor clearColor].CGColor;
         
@@ -135,7 +135,7 @@ KeyframeParametrizedBlock kbCloseFunction = ^double (NSTimeInterval time) {
         [jointLayer addSublayer:imageLayer];
         
         CGImageRef imageCrop = CGImageCreateWithImageInRect(image.CGImage, frame);
-        imageLayer.contents = (id)imageCrop;
+        imageLayer.contents = (__bridge id)imageCrop;
         CFRelease(imageCrop);
         imageLayer.backgroundColor = [UIColor clearColor].CGColor;
         

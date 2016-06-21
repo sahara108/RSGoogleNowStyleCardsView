@@ -104,7 +104,7 @@ static const int kContentViewShadowRadius = 2;
 - (void)settingsButtonClicked:(UIButton *)button {
     if (_delegate && [_delegate respondsToSelector:@selector(canToggleSettings:)]) {
         if ([_delegate canToggleSettings:self]) {
-            [self toggleSettings:button];
+            [self.delegate didPressSetting:self];
         } else {
             if (_delegate && [_delegate respondsToSelector:@selector(didTapOnCard:)]) {
                 [_delegate didTapOnCard:self];
@@ -125,11 +125,11 @@ static const int kContentViewShadowRadius = 2;
         self.clipsToBounds = YES;
         self.backgroundColor = [UIColor clearColor];
         
-        _settingsView = [[[UIView alloc] initWithFrame:CGRectMake(kContentViewMargin.left, 0, self.bounds.size.width - kContentViewMargin.left - kContentViewMargin.right, 0)] autorelease];
-        _settingsView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        _settingsView.backgroundColor = [UIColor lightGrayColor];
-        _settingsView.hidden = YES;
-        [self addSubview:_settingsView];
+//        _settingsView = [[[UIView alloc] initWithFrame:CGRectMake(kContentViewMargin.left, 0, self.bounds.size.width - kContentViewMargin.left - kContentViewMargin.right, 0)] autorelease];
+//        _settingsView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//        _settingsView.backgroundColor = [UIColor lightGrayColor];
+//        _settingsView.hidden = YES;
+//        [self addSubview:_settingsView];
         
         _contentView = [[[UIView alloc] initWithFrame:CGRectMake(kContentViewMargin.left, kContentViewMargin.top, self.bounds.size.width - kContentViewMargin.left - kContentViewMargin.right, 0)] autorelease];
         _contentView.layer.anchorPoint = CGPointMake(0, 1);
@@ -170,6 +170,13 @@ static const int kContentViewShadowRadius = 2;
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    
+    CGRect cf = _contentView.frame;
+    cf.origin.x = 0;
+    cf.origin.y = 0;
+    cf.size.width = self.frame.size.width;
+    cf.size.height = self.frame.size.height;
+    _contentView.frame = cf;
     
     CGRect frame = _settingsButton.frame;
     frame.origin.x = _contentView.bounds.size.width - frame.size.width - 5;
